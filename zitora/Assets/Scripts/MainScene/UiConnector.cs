@@ -42,12 +42,17 @@ public class UiConnector : MonoBehaviour
     {
         NetworkManager.StartClient();
     }
+
     public void Discontect()
     {
         if(NetworkManager.IsClient)
             NetworkManager.DisconnectClient(NetworkManager.LocalClientId);
         if(NetworkManager.IsHost)
             NetworkManager.Shutdown();
-        //SceneManager.LoadScene(0);
+    }
+
+    private void SetActiveMainCamera(bool isActive)
+    {
+        GameObject.Find("Main Camera").GetComponent<Camera>().enabled = isActive;
     }
 }
